@@ -41,7 +41,7 @@
             font-size: 16px;
         }
     }
-    &__input-add {
+    &__input-add, {
         position: absolute;
         width: 11px;
         height: 11px;
@@ -49,6 +49,19 @@
         left: -18px;
         bottom: 6px;
         cursor: pointer;
+    }
+    &__select {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        background-image: url(../icons/select.svg);
+        right: 0;
+        bottom: 6px;
+        cursor: pointer;
+        transition: 0.5s;
+        &_active {
+            transform: rotate(90deg);
+        }
     }
     &__input-wrapper {
         margin-bottom: 15px;
