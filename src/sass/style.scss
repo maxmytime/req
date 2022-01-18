@@ -1,0 +1,61 @@
+@import 'libs/bootstrap-reboot.min';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import 'base/variables';
+@import 'base/mixins';
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+}
+
+header {
+    position: relative;
+    margin-top: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.container {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.link {
+    color: $main-color;
+    font-size: 14px;
+    transition: 0.5s;
+    font-weight: 500;
+    &:hover {
+        color: $accent-color;
+        text-decoration: none;
+    }
+}
+
+.text {
+    &__center {
+        text-align: center
+    }
+}
+
+@import 'blocks/title';
+@import 'blocks/promo';
+@import 'blocks/button';
+@import 'blocks/form';
+@import 'blocks/navbar';
+
+@import 'blocks/media';

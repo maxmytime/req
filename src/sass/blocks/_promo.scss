@@ -1,0 +1,105 @@
+.promo {
+    height: 751px;
+    position: relative;
+    background-image: url('../img/promo_bg.png');
+    background-repeat: no-repeat;
+    background-size: 35% 100%;
+    background-position: right;
+    &__social {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 144px;
+        bottom: 20px;
+        left: 0;
+    }
+    &__wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: 497px 500px;
+        column-gap: 73px;
+        height: 751px;
+        max-width: 1110px;
+        margin: 0 auto;
+        justify-content: center;
+    }
+    &__banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+    &__wrapper-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &__img {
+        width: 100%;
+        height: auto;
+    }
+    &__descr {
+        font-size: 16px;
+        line-height: 25px;
+        color: #6F7074;
+        margin-bottom: 30px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .promo {
+        &__wrapper {
+            grid-template-columns: 400px 500px;
+            column-gap: 35px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+
+    .promo {
+        &__wrapper {
+            grid-template-columns: 400px 290px;
+            column-gap: 20px;
+        }
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .promo {
+        background-size: 60% 50%;
+        background-position: top right;
+        height: auto;
+        &__wrapper {
+            grid-template-columns: 1fr;
+            grid-row: auto;
+            row-gap: 30px;
+            column-gap: 20px;
+            padding: 0 20px;
+            height: auto;
+            &-img {
+                order: -1;
+                text-align: center;
+                display: inline-block;
+                margin-top: 100px;
+            }
+        }
+        &__banner {
+            max-width: 500px;
+            margin: 50px auto 0 auto;
+            .title_h1 {
+                font-size: 35px;
+            }
+        }
+        &__img {
+            max-width: 300px;
+        }
+        &__social {
+            bottom: -60px;
+        }
+    }
+}

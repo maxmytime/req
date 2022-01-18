@@ -1,0 +1,28 @@
+.btn-group {
+    display: flex;
+    align-items: center;
+    &_right {
+        justify-content: flex-end;
+    }
+}
+
+.btn {
+    font-weight: 400;
+    &_add {
+        color: $input-color;
+        border-bottom: 1px solid $input-color;
+        &:hover {
+            color: $main-color;
+            border-bottom: 1px solid $main-color;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .btn {
+        &_blue, &_transparent {
+            margin-right: 10px;
+        }
+    }
+
+}
