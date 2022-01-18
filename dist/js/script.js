@@ -140,6 +140,12 @@ window.addEventListener('DOMContentLoaded', () => {
             lableWrapper.appendChild(newInput);
             inputs = document.querySelectorAll('input');
             autocompleteOff(inputs);
+        } else if (e.target.classList.contains('form__select')) {
+            const select = e.target;
+            const lableWrapper = e.target.parentNode;
+            const options = lableWrapper.querySelector('.form__options');
+            select.classList.toggle('form__select_active');
+            options.classList.toggle('form__options_active');
         }
     });
 
