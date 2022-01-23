@@ -130,8 +130,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     autocompleteOff(inputs);
 
-    // Обрабатываем событие нажатия кнопки добавить новый input
+    //
+
+    // Обрабатываем событие клика по форме
     form.addEventListener('click', (e) => {
+        // Обрабатываем событие нажатия кнопки добавить новый input
         if (e.target.classList.contains('form__input-add')) {
             let lableWrapper = e.target.parentNode;
             let input = lableWrapper.querySelector('.form__input');
@@ -140,12 +143,24 @@ window.addEventListener('DOMContentLoaded', () => {
             lableWrapper.appendChild(newInput);
             inputs = document.querySelectorAll('input');
             autocompleteOff(inputs);
+        // Обрабатываем событие нажатия кнопки открыть select
         } else if (e.target.classList.contains('form__select')) {
             const select = e.target;
             const lableWrapper = e.target.parentNode;
             const options = lableWrapper.querySelector('.form__options');
+            const checkboxs = options.querySelectorAll('input');
             select.classList.toggle('form__select_active');
             options.classList.toggle('form__options_active');
+            checkboxs.forEach(e => {
+                e.addEventListener('change', checkbox => {
+                    const chbox = checkbox.target;
+                    if (chbox.checked) {
+                        console.log('Выбран', chbox.parentNode.textContent);
+                    } else {
+                        console.log('Выбор отменен', chbox.parentNode.textContent);
+                    }
+                });
+            });
         }
     });
 
