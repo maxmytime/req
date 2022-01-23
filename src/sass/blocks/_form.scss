@@ -28,12 +28,13 @@
             }
         }
     }
-    &__input {
+    &__input, &__input:disabled {
         width: 100%;
         font-size: 14px;
         padding: 7px 3px 0 3px;
         border: none;
         border-bottom: 1px solid $input-color;
+        background-color: $options-bg;
         &:focus-visible {
             outline: none;
         }
@@ -50,7 +51,7 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
-        top: 31px;
+        top: 100%;
         left: 0;
         &_active {
             display: block;

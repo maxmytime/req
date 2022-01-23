@@ -130,7 +130,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
     autocompleteOff(inputs);
 
-    //
+    // Контролируем выбранные чекбоксы
+
+    function controlCheckBox(event) {
+        const chbox = event.target;
+        if (chbox.checked) {
+            const lableWrapper = chbox.parentNode.parentNode.parentNode;
+            let input = lableWrapper.querySelector('.form__input');
+            let newInput = input.cloneNode();
+            newInput.value = chbox.parentNode.textContent;
+            newInput.setAttribute('disabled', 'disabled');
+            lableWrapper.prepend(newInput);
+            inputs = document.querySelectorAll('input');
+            autocompleteOff(inputs);
+        } else {
+            const lableWrapper = chbox.parentNode.parentNode.parentNode;
+            const inputs = lableWrapper.querySelectorAll('.form__input');
+            inputs.forEach(i => {
+                if (i.value == chbox.parentNode.textContent) {
+                    i.remove();
+                }
+            });
+        }
+    }
 
     // Обрабатываем событие клика по форме
     form.addEventListener('click', (e) => {
@@ -145,6 +167,18 @@ window.addEventListener('DOMContentLoaded', () => {
             autocompleteOff(inputs);
         // Обрабатываем событие нажатия кнопки открыть select
         } else if (e.target.classList.contains('form__select')) {
+            let activeSelect = document.querySelectorAll('.form__select_active');
+            let activeOptions = document.querySelectorAll('.form__options_active');
+            if (activeSelect.length > 0) {
+                activeSelect.forEach(e => {
+                    e.classList.remove('form__select_active');
+                });
+            }
+            if (activeOptions.length > 0) {
+                activeOptions.forEach(e => {
+                    e.classList.remove('form__options_active');
+                });
+            }
             const select = e.target;
             const lableWrapper = e.target.parentNode;
             const options = lableWrapper.querySelector('.form__options');
@@ -152,15 +186,24 @@ window.addEventListener('DOMContentLoaded', () => {
             select.classList.toggle('form__select_active');
             options.classList.toggle('form__options_active');
             checkboxs.forEach(e => {
-                e.addEventListener('change', checkbox => {
-                    const chbox = checkbox.target;
-                    if (chbox.checked) {
-                        console.log('Выбран', chbox.parentNode.textContent);
-                    } else {
-                        console.log('Выбор отменен', chbox.parentNode.textContent);
-                    }
-                });
+                e.addEventListener('change', controlCheckBox);
             });
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('form__select')) {
+            if (e.target.getAttribute('type') != 'checkbox') {
+                const select = document.querySelectorAll('.form__select_active');
+                const option = document.querySelectorAll('.form__options_active');
+
+                select.forEach(e => {
+                    e.classList.remove('form__select_active');
+                });
+                option.forEach(e => {
+                    e.classList.remove('form__options_active');
+                });
+            }
         }
     });
 
