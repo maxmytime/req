@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.form');
     let checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
     let inputs = document.querySelectorAll('input');
+    let selectItems = document.querySelectorAll('.js-options-item');
 
     // Шаблоны элементов для добавления
     // Шаблон блока контактов
@@ -74,8 +75,8 @@ window.addEventListener('DOMContentLoaded', () => {
             <div class="form__lable-wrapper">
                 <span class="form__select"></span>
                 <ul class="form__options">
-                    <li class="form__options-item">ИП</li>
-                    <li class="form__options-item">ЮЛ</li>
+                    <li class="form__options-item js-options-item">ИП</li>
+                    <li class="form__options-item js-options-item">ЮЛ</li>
                 </ul>
                 <input type="text" name="organization-form" autocomplete="off" class="form__input">
             </div>
@@ -160,6 +161,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     inputs = document.querySelectorAll('input');
                     autocompleteOff(inputs);
 
+                    // input.style.height = '0px';
+
                 } else {
                     const formLableWrapper = chbox.parentNode.parentNode.parentNode;
                     const inputs = formLableWrapper.querySelectorAll('.form__input');
@@ -175,6 +178,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
     controlCheckBox(checkBox);
 
+    // Контролируем выбор пункта Select
+    function controlSelectItems(selectItems) {
+        console.log(selectItems);
+        selectItems.forEach(item => {
+            item.addEventListener('click', e => {
+                console.log('Клик');
+                const optionsItem = e.target;
+                const formLableWrapper = optionsItem.parentNode.parentNode;
+                const formInput = formLableWrapper.querySelector('.form__input');
+
+                formInput.value = optionsItem.textContent;
+                formInput.setAttribute('disabled', 'disabled');
+            });
+        });
+    }
+
+    controlSelectItems(selectItems);
 
     // Select
     document.addEventListener('click', (e) => {
@@ -207,9 +227,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         }
     });
-
-    // Обрабатываем событие клика по чекбоксу в Select
-
 
     // Обрабатываем событие клика по форме
     form.addEventListener('click', (e) => {
@@ -247,6 +264,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
             checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
             controlCheckBox(checkBox);
+
+            selectItems = document.querySelectorAll('.js-options-item');
+            controlSelectItems(selectItems);
         });
     });
 
