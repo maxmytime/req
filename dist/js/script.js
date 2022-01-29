@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const inputAdd = document.querySelectorAll('.form__input-add');
     const btnAdd = document.querySelectorAll('.btn__contact-add');
     const form = document.querySelector('.form');
+    let checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
     let inputs = document.querySelectorAll('input');
 
     // Шаблоны элементов для добавления
@@ -36,8 +37,6 @@ window.addEventListener('DOMContentLoaded', () => {
     // Шаблон блока ЮЛ/ИП
     const organizationBlock = `
         <div class="form__input-wrapper">
-
-        <h3 class="title title_h3">ЮЛ/ИП</h3>
 
         <!-- Организация - ЮЛ/ИП - Имя - НАЧАЛО -->
         <input type="text" name='organization-name' autocomplete="off" placeholder="Имя" class="form__input">
@@ -145,28 +144,37 @@ window.addEventListener('DOMContentLoaded', () => {
 
     autocompleteOff(inputs);
 
-    // Контролируем выбранные чекбоксы
-    // function controlCheckBox(event) {
-    //     const chbox = event.target;
-    //     if (chbox.checked) {
-    //         const lableWrapper = chbox.parentNode.parentNode.parentNode;
-    //         let input = lableWrapper.querySelector('.form__input');
-    //         let newInput = input.cloneNode();
-    //         newInput.value = chbox.parentNode.textContent;
-    //         newInput.setAttribute('disabled', 'disabled');
-    //         lableWrapper.prepend(newInput);
-    //         inputs = document.querySelectorAll('input');
-    //         autocompleteOff(inputs);
-    //     } else {
-    //         const lableWrapper = chbox.parentNode.parentNode.parentNode;
-    //         const inputs = lableWrapper.querySelectorAll('.form__input');
-    //         inputs.forEach(i => {
-    //             if (i.value == chbox.parentNode.textContent) {
-    //                 i.remove();
-    //             }
-    //         });
-    //     }
-    // }
+    // Контролируем выбранные чекбоксы внутри Select
+    function controlCheckBox(checkBox) {
+        checkBox.forEach(item => {
+            item.addEventListener('click', e => {
+                const chbox = e.target;
+                if (chbox.checked) {
+                    const formLableWrapper = chbox.parentNode.parentNode.parentNode;
+                    let input = formLableWrapper.querySelector('.form__input');
+                    let newInput = input.cloneNode();
+                    newInput.value = chbox.parentNode.textContent;
+                    newInput.setAttribute('disabled', 'disabled');
+                    formLableWrapper.prepend(newInput);
+
+                    inputs = document.querySelectorAll('input');
+                    autocompleteOff(inputs);
+
+                } else {
+                    const formLableWrapper = chbox.parentNode.parentNode.parentNode;
+                    const inputs = formLableWrapper.querySelectorAll('.form__input');
+                    inputs.forEach(i => {
+                        if (i.value == chbox.parentNode.textContent) {
+                            i.remove();
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    controlCheckBox(checkBox);
+
 
     // Select
     document.addEventListener('click', (e) => {
@@ -200,6 +208,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Обрабатываем событие клика по чекбоксу в Select
+
+
     // Обрабатываем событие клика по форме
     form.addEventListener('click', (e) => {
         // Обрабатываем событие нажатия кнопки добавить новый input
@@ -207,6 +218,7 @@ window.addEventListener('DOMContentLoaded', () => {
             let lableWrapper = e.target.parentNode;
             let input = lableWrapper.querySelector('.form__input');
             let newInput = input.cloneNode();
+
             newInput.value ='';
             lableWrapper.appendChild(newInput);
             inputs = document.querySelectorAll('input');
@@ -218,20 +230,24 @@ window.addEventListener('DOMContentLoaded', () => {
     btnAdd.forEach((item)=> {
         item.addEventListener('click', (btn) => {
             btn.preventDefault();
-                const div = document.createElement('div');
-                const dataName = btn.target.getAttribute('data-name');
-                div.classList.add('form__input-wrapper');
-                if (dataName === 'contactBlock') {
-                    div.innerHTML = contactBlock;
-                } else if (dataName === 'organizationBlock') {
-                    div.innerHTML = organizationBlock;
-                } else if (dataName === 'officeBlock') {
-                    div.innerHTML = officeBlock;
-                }
-                btn.target.parentNode.before(div);
-                inputs = document.querySelectorAll('input');
-                autocompleteOff(inputs);
-            });
+            const div = document.createElement('div');
+            const dataName = btn.target.getAttribute('data-name');
+            div.classList.add('form__input-wrapper');
+            if (dataName === 'contactBlock') {
+                div.innerHTML = contactBlock;
+            } else if (dataName === 'organizationBlock') {
+                div.innerHTML = organizationBlock;
+            } else if (dataName === 'officeBlock') {
+                div.innerHTML = officeBlock;
+            }
+            btn.target.parentNode.before(div);
+
+            inputs = document.querySelectorAll('input');
+            autocompleteOff(inputs);
+
+            checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
+            controlCheckBox(checkBox);
+        });
     });
 
 });
