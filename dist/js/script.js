@@ -5,9 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const inputAdd = document.querySelectorAll('.form__input-add');
     const btnAdd = document.querySelectorAll('.btn__contact-add');
     const form = document.querySelector('.form');
-    let checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
-    let inputs = document.querySelectorAll('input');
-    let selectItems = document.querySelectorAll('.js-options-item');
+    // let selectItems = document.querySelectorAll('.js-options-item');
 
     // Шаблоны элементов для добавления
     // Шаблон блока контактов
@@ -131,7 +129,8 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>`;
 
     // Отключаем подсказки автозаполнения для input
-    function autocompleteOff(inputs) {
+    function autocompleteOff() {
+        let inputs = document.querySelectorAll('input');
         inputs.forEach(input => {
             let attr = input.getAttribute('name');
             input.addEventListener('focus', () => {
@@ -143,10 +142,11 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    autocompleteOff(inputs);
+    autocompleteOff();
 
     // Контролируем выбранные чекбоксы внутри Select
-    function controlCheckBox(checkBox) {
+    function controlCheckBox() {
+        let checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
         checkBox.forEach(item => {
             item.addEventListener('click', e => {
                 const chbox = e.target;
@@ -158,10 +158,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     newInput.setAttribute('disabled', 'disabled');
                     formLableWrapper.prepend(newInput);
 
-                    inputs = document.querySelectorAll('input');
-                    autocompleteOff(inputs);
+                    autocompleteOff();
 
-                    // input.style.height = '0px';
 
                 } else {
                     const formLableWrapper = chbox.parentNode.parentNode.parentNode;
@@ -176,14 +174,13 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    controlCheckBox(checkBox);
+    controlCheckBox();
 
     // Контролируем выбор пункта Select
-    function controlSelectItems(selectItems) {
-        console.log(selectItems);
+    function controlSelectItems() {
+        let selectItems = document.querySelectorAll('.js-options-item');
         selectItems.forEach(item => {
             item.addEventListener('click', e => {
-                console.log('Клик');
                 const optionsItem = e.target;
                 const formLableWrapper = optionsItem.parentNode.parentNode;
                 const formInput = formLableWrapper.querySelector('.form__input');
@@ -194,7 +191,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    controlSelectItems(selectItems);
+    controlSelectItems();
 
     // Select
     document.addEventListener('click', (e) => {
@@ -238,8 +235,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             newInput.value ='';
             lableWrapper.appendChild(newInput);
-            inputs = document.querySelectorAll('input');
-            autocompleteOff(inputs);
+            autocompleteOff();
         }
     });
 
@@ -259,14 +255,11 @@ window.addEventListener('DOMContentLoaded', () => {
             }
             btn.target.parentNode.before(div);
 
-            inputs = document.querySelectorAll('input');
-            autocompleteOff(inputs);
+            autocompleteOff();
+            controlCheckBox();
 
-            checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
-            controlCheckBox(checkBox);
-
-            selectItems = document.querySelectorAll('.js-options-item');
-            controlSelectItems(selectItems);
+            // selectItems = document.querySelectorAll('.js-options-item');
+            controlSelectItems();
         });
     });
 
