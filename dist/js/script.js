@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const inputAdd = document.querySelectorAll('.form__input-add');
     const btnAdd = document.querySelectorAll('.btn__contact-add');
     const form = document.querySelector('.form');
-    // let selectItems = document.querySelectorAll('.js-options-item');
 
     // Шаблоны элементов для добавления
     // Шаблон блока контактов
@@ -37,20 +36,20 @@ window.addEventListener('DOMContentLoaded', () => {
     const organizationBlock = `
         <div class="form__input-wrapper">
 
-        <!-- Организация - ЮЛ/ИП - Имя - НАЧАЛО -->
+        <!-- Организация - Организации - Имя - НАЧАЛО -->
         <input type="text" name='organization-name' autocomplete="off" placeholder="Имя" class="form__input">
-        <!-- Организация - ЮЛ/ИП - Имя - КОНЕЦ -->
+        <!-- Организация - Организации - Имя - КОНЕЦ -->
 
-        <!-- Организация - ЮЛ/ИП - ИНН - НАЧАЛО -->
+        <!-- Организация - Организации - ИНН - НАЧАЛО -->
         <label for="organization-INN" class="form__lable">
             <span class="form__lable-name">ИНН</span>
             <div class="form__lable-wrapper">
                 <input type="text" name="organization-INN" autocomplete="off" class="form__input">
             </div>
         </label>
-        <!-- Организация - ЮЛ/ИП - ИНН - КОНЕЦ -->
+        <!-- Организация - Организации - ИНН - КОНЕЦ -->
 
-        <!-- Организация - ЮЛ/ИП - СНО - НАЧАЛО -->
+        <!-- Организация - Организации - СНО - НАЧАЛО -->
         <label for="organization-taxation-system" class="form__lable">
             <span class="form__lable-name">СНО</span>
             <div class="form__lable-wrapper">
@@ -65,9 +64,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 <input type="text" name="organization-taxation-system" autocomplete="off" class="form__input">
             </div>
         </label>
-        <!-- Организация - ЮЛ/ИП - СНО - КОНЕЦ -->
+        <!-- Организация - Организации - СНО - КОНЕЦ -->
 
-        <!-- Организация - ЮЛ/ИП - Форма - НАЧАЛО -->
+        <!-- Организация - Организации - Форма - НАЧАЛО -->
         <label for="organization-form" class="form__lable">
             <span class="form__lable-name">Форма</span>
             <div class="form__lable-wrapper">
@@ -79,58 +78,220 @@ window.addEventListener('DOMContentLoaded', () => {
                 <input type="text" name="organization-form" autocomplete="off" class="form__input">
             </div>
         </label>
-        <!-- Организация - ЮЛ/ИП - Форма - КОНЕЦ -->
+        <!-- Организация - Организации - Форма - Конец -->
 
-        <!-- Организация - ЮЛ/ИП - Комментарий - НАЧАЛО -->
-        <label for="organization-comment" class="form__lable">
-            <span class="form__lable-name">Комментарий</span>
+        <!-- Организация - Организации - Вид деятельности - НАЧАЛО -->
+        <label for="organization-kind-of-activity" class="form__lable">
+            <span class="form__lable-name">Деятельность</span>
             <div class="form__lable-wrapper">
-                <input type="text" name="organization-comment" autocomplete="off" class="form__input">
+                <input type="text" name="organization-kind-of-activity" autocomplete="off" class="form__input">
             </div>
         </label>
-        <!-- Организация - ЮЛ/ИП - Комментарий - КОНЕЦ -->
+        <!-- Организация - Организации - Вид деятельности - КОНЕЦ -->
 
-    </div>`;
-    // Шаблон блока Офисы/ТТ
-    const officeBlock = `
-    <div class="form__input-wrapper">
+        <!-- Организация- Телефон - НАЧАЛО -->
+        <label for="contact-phone" class="form__lable">
+            <span class="form__lable-name">Телефон</span>
+            <div class="form__lable-wrapper">
+                <span class="form__input-add"></span>
+                <input type="text" name='contact-phone' autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Организация- Телефон - КОНЕЦ -->
 
-        <!-- Организация - Офисы/ТТ - Имя - НАЧАЛО -->
-        <input type="text" name='organization-name' autocomplete="off" placeholder="Имя" class="form__input">
-        <!-- Организация - Офисы/ТТ - Имя - КОНЕЦ -->
+        <!-- Организация- E-mail - НАЧАЛО -->
+        <label for="contact-email" class="form__lable">
+            <span class="form__lable-name">E-mail</span>
+            <div class="form__lable-wrapper">
+                <span class="form__input-add"></span>
+                <input type="text" name="contact-email" autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Организация- E-mail - КОНЕЦ -->
 
-        <!-- Организация - Офисы/ТТ - Адрес - НАЧАЛО -->
+        <!-- Организация - Организации - Адрес - НАЧАЛО -->
         <label for="organization-address" class="form__lable">
             <span class="form__lable-name">Адрес</span>
-            <div class="form__lable-wrapper">
-                <input type="text" name="organization-address" autocomplete="off" class="form__input">
+            <div class="form__textarea-wrapper">
+                <textarea name="organization-address" rows="1" class="form__textarea"></textarea>
             </div>
         </label>
-        <!-- Организация - Офисы/ТТ - Адрес - КОНЕЦ -->
+        <!-- Организация - Организации - Адрес - КОНЕЦ -->
 
-        <!-- Организация - Офисы/ТТ - Тип - НАЧАЛО -->
-        <label for="organization-type" class="form__lable">
-            <span class="form__lable-name">Тип</span>
-            <div class="form__lable-wrapper">
-                <input type="text" name="organization-type" autocomplete="off" class="form__input">
-            </div>
-        </label>
-        <!-- Организация - Офисы/ТТ - Тип - КОНЕЦ -->
-
-        <!-- Организация - Офисы/ТТ - Комментарий - НАЧАЛО -->
+        <!-- Организация - Организации - Комментарий - НАЧАЛО -->
         <label for="organization-comment" class="form__lable">
             <span class="form__lable-name">Комментарий</span>
-            <div class="form__lable-wrapper">
-                <input type="text" name="organization-comment" autocomplete="off" class="form__input">
+            <div class="form__textarea-wrapper">
+                <textarea name="organization-comment" rows="1" class="form__textarea"></textarea>
             </div>
         </label>
-        <!-- Организация - Офисы/ТТ - Комментарий - КОНЕЦ -->
+        <!-- Организация - Организации - Комментарий - КОНЕЦ -->
+
+    </div>`;
+    // Шаблон блока Подразделение
+    const subdivisionBlock = `
+    <div class="form__input-wrapper">
+
+        <!-- Организация - Подразделение - Имя - НАЧАЛО -->
+        <input type="text" name='subdivision-name' autocomplete="off" placeholder="Имя" class="form__input">
+        <!-- Организация - Подразделение - Имя - КОНЕЦ -->
+
+        <!-- Организация - Подразделение - Адрес - НАЧАЛО -->
+        <label for="subdivision-address" class="form__lable">
+            <span class="form__lable-name">Адрес</span>
+            <div class="form__textarea-wrapper">
+                <textarea name="subdivision-address" rows="1" class="form__textarea"></textarea>
+            </div>
+        </label>
+        <!-- Организация - Подразделение - Адрес - КОНЕЦ -->
+
+        <!-- Организация - Подразделение - Тип - НАЧАЛО -->
+        <label for="subdivision-type" class="form__lable">
+            <span class="form__lable-name">Тип</span>
+            <div class="form__lable-wrapper">
+                <input type="text" name="subdivision-type" autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Организация - Подразделение - Тип - КОНЕЦ -->
+
+        <!-- Организация - Подразделение - Комментарий - НАЧАЛО -->
+        <label for="subdivision-comment" class="form__lable">
+            <span class="form__lable-name">Комментарий</span>
+            <div class="form__textarea-wrapper">
+                <textarea name="subdivision-comment" rows="1" class="form__textarea"></textarea>
+            </div>
+        </label>
+        <!-- Организация - Подразделение - Комментарий - КОНЕЦ -->
+
+    </div>`;
+    // Шаблон блока Программные продукты 1С
+    const pp1CBlock = `
+        <div class="form__input-wrapper">
+
+        <!-- Программные продукты 1С - Программный продукт 1С - НАЧАЛО -->
+        <label for="pp1C-name" class="form__lable">
+            <div class="form__lable-wrapper form__lable-wrapper_width-100">
+                <span class="form__select"></span>
+                <ul class="form__options form__options_width-100">
+                    <li class="form__options-item js-options-item">1С:Розница</li>
+                    <li class="form__options-item js-options-item">1С:Управление нашей фирмой</li>
+                    <li class="form__options-item js-options-item">1С:Управление торговлей</li>
+                    <li class="form__options-item js-options-item">1С:Бухгалтерия</li>
+                    <li class="form__options-item js-options-item">1С:Зарплата и управление персоналом</li>
+                </ul>
+                <input type="text" name="pp1C-name" autocomplete="off" placeholder="Программный продукт 1С" class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Программный продукт 1С - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Рег. номер - НАЧАЛО -->
+        <label for="pp1C-regnumber" class="form__lable">
+            <span class="form__lable-name">Рег. номер</span>
+            <div class="form__lable-wrapper">
+                <input type="text" name="pp1C-regnumber" autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Рег. номер - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - 1С:КП - НАЧАЛО -->
+        <label for="pp1C-KP" class="form__lable">
+            <span class="form__lable-name">1C:КП</span>
+            <div class="form__lable-wrapper">
+                <span class="form__select"></span>
+                <ul class="form__options">
+                    <li class="form__options-item js-options-item">Нет</li>
+                    <li class="form__options-item js-options-item">Техно</li>
+                    <li class="form__options-item js-options-item">ПРОФ</li>
+                </ul>
+                <input type="text" name="pp1C-KP" autocomplete="off" disabled class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - 1С:КП - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Лицензия - НАЧАЛО -->
+        <label for="pp1C-license" class="form__lable">
+            <span class="form__lable-name">Лицензия</span>
+            <div class="form__lable-wrapper">
+                <span class="form__select"></span>
+                <ul class="form__options">
+                    <li class="form__options-item js-options-item">Да</li>
+                    <li class="form__options-item js-options-item">Нет</li>
+                </ul>
+                <input type="text" name="pp1C-license" autocomplete="off" disabled class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Лицензия - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Пользователи - НАЧАЛО -->
+        <label for="pp1C-user" class="form__lable">
+            <span class="form__lable-name">Пользователи</span>
+            <div class="form__lable-wrapper">
+                <input type="text" name="pp1C-user" autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Пользователи - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Инфо. базы - НАЧАЛО -->
+        <label for="pp1C-infodb" class="form__lable">
+            <span class="form__lable-name">Инфо. базы</span>
+            <div class="form__lable-wrapper">
+                <input type="text" name="pp1C-infodb" autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Инфо. базы - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Релиз - НАЧАЛО -->
+        <label for="pp1C-release" class="form__lable">
+            <span class="form__lable-name">Релиз</span>
+            <div class="form__lable-wrapper">
+                <input type="text" name="pp1C-release" autocomplete="off" class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Релиз - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Регистрация - НАЧАЛО -->
+        <label for="pp1C-reg" class="form__lable">
+            <span class="form__lable-name">Регистрация</span>
+            <div class="form__lable-wrapper">
+                <span class="form__select"></span>
+                <ul class="form__options">
+                    <li class="form__options-item js-options-item">Да</li>
+                    <li class="form__options-item js-options-item">Нет</li>
+                </ul>
+                <input type="text" name="pp1C-reg" autocomplete="off" disabled class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Регистрация - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Доработки - НАЧАЛО -->
+        <label for="pp1C-rework" class="form__lable">
+            <span class="form__lable-name">Доработки</span>
+            <div class="form__lable-wrapper">
+                <span class="form__select"></span>
+                <ul class="form__options">
+                    <li class="form__options-item js-options-item">Да</li>
+                    <li class="form__options-item js-options-item">Нет</li>
+                </ul>
+                <input type="text" name="pp1C-rework" autocomplete="off" disabled class="form__input">
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Доработки - КОНЕЦ -->
+
+        <!-- Программные продукты 1С - Комментарий - НАЧАЛО -->
+        <label for="pp1C-comment" class="form__lable">
+            <span class="form__lable-name">Комментарий</span>
+            <div class="form__textarea-wrapper">
+                <textarea name="pp1C-comment" rows="1" class="form__textarea"></textarea>
+            </div>
+        </label>
+        <!-- Программные продукты 1С - Комментарий - КОНЕЦ -->
 
     </div>`;
 
     // Отключаем подсказки автозаполнения для input
     function autocompleteOff() {
         let inputs = document.querySelectorAll('input');
+        document.querySelectorAll('textarea');
         inputs.forEach(input => {
             let attr = input.getAttribute('name');
             input.addEventListener('focus', () => {
@@ -140,37 +301,59 @@ window.addEventListener('DOMContentLoaded', () => {
                 input.setAttribute("name", attr);
             });
         });
+        document.querySelectorAll('textarea').forEach(textarea => {
+            let attr = textarea.getAttribute('name');
+            textarea.addEventListener('focus', () => {
+                textarea.setAttribute("name", Math.random() * 5);
+            });
+            textarea.addEventListener('blur', () => {
+                textarea.setAttribute("name", attr);
+            });
+        });
     }
 
     autocompleteOff();
 
     // Контролируем выбранные чекбоксы внутри Select
+
+    function activeCheckBox(e) {
+        const chbox = e.target;
+        if (chbox.checked) {
+            const formLableWrapper = chbox.parentNode.parentNode.parentNode;
+            let input = formLableWrapper.querySelector('.form__input');
+            const inputs = formLableWrapper.querySelectorAll('.form__input');
+            let newInput = input.cloneNode();
+
+            if (inputs.length == 1 && input.value == '') {
+                input.value = chbox.parentNode.textContent;
+                input.setAttribute('disabled', 'disabled');
+                console.log(inputs.length);
+            } else {
+                newInput.classList.add('form__input');
+                newInput.value = chbox.parentNode.textContent;
+                newInput.setAttribute('disabled', 'disabled');
+                formLableWrapper.prepend(newInput);
+            }
+
+            autocompleteOff();
+
+        } else {
+            const formLableWrapper = chbox.parentNode.parentNode.parentNode;
+            const inputs = formLableWrapper.querySelectorAll('.form__input');
+            inputs.forEach(i => {
+                if (inputs.length == 1) {
+                    i.value = '';
+                } else if (i.value == chbox.parentNode.textContent) {
+                    i.remove();
+                }
+            });
+        }
+    }
+
     function controlCheckBox() {
         let checkBox = document.querySelectorAll('.form__options input[type="checkbox"]');
         checkBox.forEach(item => {
-            item.addEventListener('click', e => {
-                const chbox = e.target;
-                if (chbox.checked) {
-                    const formLableWrapper = chbox.parentNode.parentNode.parentNode;
-                    let input = formLableWrapper.querySelector('.form__input');
-                    let newInput = input.cloneNode();
-                    newInput.value = chbox.parentNode.textContent;
-                    newInput.setAttribute('disabled', 'disabled');
-                    formLableWrapper.prepend(newInput);
-
-                    autocompleteOff();
-
-
-                } else {
-                    const formLableWrapper = chbox.parentNode.parentNode.parentNode;
-                    const inputs = formLableWrapper.querySelectorAll('.form__input');
-                    inputs.forEach(i => {
-                        if (i.value == chbox.parentNode.textContent) {
-                            i.remove();
-                        }
-                    });
-                }
-            });
+            item.addEventListener('click', activeCheckBox);
         });
     }
 
@@ -184,9 +367,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 const optionsItem = e.target;
                 const formLableWrapper = optionsItem.parentNode.parentNode;
                 const formInput = formLableWrapper.querySelector('.form__input');
+                const formOptions = formLableWrapper.querySelector('.form__options');
+                const formSelect = formLableWrapper.querySelector('.form__select');
 
                 formInput.value = optionsItem.textContent;
                 formInput.setAttribute('disabled', 'disabled');
+                formOptions.classList.remove('form__options_active');
+                formSelect.classList.remove('form__select_active');
             });
         });
     }
@@ -225,6 +412,37 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // textarea авто высота по размеру контента
+    document.querySelectorAll('.form__textarea').forEach(el => {
+        const formTextareaWrapper = el.parentNode;
+        console.log(formTextareaWrapper);
+        el.style.height = el.setAttribute('style', 'height: ' + el.scrollHeight + 'px');
+        formTextareaWrapper.style.height = formTextareaWrapper.setAttribute('style', 'height: ' + el.scrollHeight + 'px');
+        el.classList.add('auto');
+        el.addEventListener('input', e => {
+            el.style.height = 'auto';
+            el.style.height = (el.scrollHeight) + 'px';
+            formTextareaWrapper.style.height = (el.scrollHeight) + 'px';
+        });
+    });
+
+    function autoHeightTextarea() {
+        document.querySelectorAll('.form__textarea').forEach(el => {
+            const formTextareaWrapper = el.parentNode;
+            console.log(formTextareaWrapper);
+            el.style.height = el.setAttribute('style', 'height: ' + el.scrollHeight + 'px');
+            formTextareaWrapper.style.height = formTextareaWrapper.setAttribute('style', 'height: ' + el.scrollHeight + 'px');
+            el.classList.add('auto');
+            el.addEventListener('input', e => {
+                el.style.height = 'auto';
+                el.style.height = (el.scrollHeight) + 'px';
+                formTextareaWrapper.style.height = (el.scrollHeight) + 'px';
+            });
+        });
+    }
+
+    autoHeightTextarea();
+
     // Обрабатываем событие клика по форме
     form.addEventListener('click', (e) => {
         // Обрабатываем событие нажатия кнопки добавить новый input
@@ -236,6 +454,7 @@ window.addEventListener('DOMContentLoaded', () => {
             newInput.value ='';
             lableWrapper.appendChild(newInput);
             autocompleteOff();
+            autoHeightTextarea();
         }
     });
 
@@ -250,15 +469,16 @@ window.addEventListener('DOMContentLoaded', () => {
                 div.innerHTML = contactBlock;
             } else if (dataName === 'organizationBlock') {
                 div.innerHTML = organizationBlock;
-            } else if (dataName === 'officeBlock') {
-                div.innerHTML = officeBlock;
+            } else if (dataName === 'subdivisionBlock') {
+                div.innerHTML = subdivisionBlock;
+            } else if (dataName === 'pp1CBlock') {
+                div.innerHTML = pp1CBlock;
             }
             btn.target.parentNode.before(div);
 
             autocompleteOff();
+            autoHeightTextarea();
             controlCheckBox();
-
-            // selectItems = document.querySelectorAll('.js-options-item');
             controlSelectItems();
         });
     });

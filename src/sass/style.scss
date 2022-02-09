@@ -30,6 +30,12 @@ input[type='number'] {
     -moz-appearance: textfield;
 }
 
+textarea {
+    // line-height: normal;
+
+    appearance: auto;
+}
+
 .container {
     max-width: 1110px;
     margin: 0 auto;
