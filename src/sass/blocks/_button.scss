@@ -16,6 +16,15 @@
             border-bottom: 1px solid $main-color;
         }
     }
+    &_main {
+        padding: 10px;
+        outline: none;
+        border: solid 1px $input-color;
+        border-radius: 5px;
+        &:hover {
+            outline: solid 1px $input-color;
+        }
+    }
 }
 
 @media (max-width: 576px) {

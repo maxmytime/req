@@ -483,4 +483,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    form.addEventListener('submit', btn => {
+        btn.preventDefault();
+    });
+
 });
